@@ -60,7 +60,7 @@ export function DilemmaForm({ loading, error, onSubmit }: DilemmaFormProps) {
               type="submit"
               disabled={loading || !value.trim()}
               size="lg"
-              className="absolute bottom-3 right-3 bg-gradient-to-r from-cyan-400 to-sky-500 font-semibold hover:from-cyan-300 hover:to-sky-400 hover:shadow-[0_0_28px_rgba(34,211,238,0.55)] disabled:from-cyan-400/70 disabled:to-sky-500/70 disabled:opacity-100 disabled:shadow-none"
+              className="absolute bottom-3 right-3 bg-gradient-to-r from-cyan-400 to-sky-500 font-semibold text-slate-950 shadow-[0_0_18px_rgba(34,211,238,0.4)] ring-1 ring-cyan-300/50 hover:from-cyan-300 hover:to-sky-400 hover:shadow-[0_0_32px_rgba(34,211,238,0.65)] disabled:from-cyan-400/70 disabled:to-sky-500/70 disabled:opacity-100 disabled:shadow-none"
             >
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ArrowRight className="h-4 w-4" />}
               {loading ? "Assembling…" : "Convene the panel"}
