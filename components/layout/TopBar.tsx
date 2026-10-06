@@ -10,15 +10,14 @@ export function TopBar({ debate, onExport }: { debate: DebateController; onExpor
   const hasRun = status !== "idle";
 
   return (
-    <header className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-4 py-3 sm:px-6">
+    <header className="flex flex-wrap items-center justify-between gap-3 border border-[#e95c24] bg-[linear-gradient(105deg,#f97316_0%,#f04c24_52%,#e11d48_100%)] bg-[length:160%_160%] px-4 py-3 text-white shadow-[0_2px_5px_#7c2d1240] [animation:sunset_8s_ease-in-out_infinite_alternate] sm:px-6">
+      <style>{`@keyframes sunset{0%{background-position:0% 50%}100%{background-position:100% 50%}}`}</style>
       <div className="flex min-w-0 items-center gap-3">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-amber-400 shadow-glow">
-          <Sparkles className="h-5 w-5 text-slate-950" />
-        </div>
+        <Sparkles className="h-6 w-6 shrink-0 fill-current text-[#431407] drop-shadow-[0_1px_1px_#fff5]" />
         <div className="min-w-0">
-          <h1 className="text-sm font-bold tracking-wide text-white sm:text-base">DecisionForge AI</h1>
+          <h1 className="text-sm font-extrabold tracking-[0.015em] text-white sm:text-base">DecisionForge AI</h1>
           {hasRun && dilemma && (
-            <p dir="auto" className="truncate text-xs text-slate-400" title={dilemma}>
+            <p dir="auto" className="truncate text-xs text-orange-50/90" title={dilemma}>
               {truncate(dilemma, 70)}
             </p>
           )}
@@ -26,10 +25,11 @@ export function TopBar({ debate, onExport }: { debate: DebateController; onExpor
       </div>
 
       <div className="flex items-center gap-2">
-        <div className="flex items-center rounded-lg border border-white/10 bg-white/5 p-0.5 text-xs">
+        <div className="flex items-center gap-0.5 rounded-full border border-[#fff9] bg-white p-0.5 shadow-[0_1px_3px_#7c2d1233]">
           <button
             onClick={() => setMode("mock")}
-            className={`rounded-md px-2.5 py-1 font-medium transition ${mode === "mock" ? "bg-cyan-400 text-slate-950" : "text-slate-400 hover:text-white"}`}
+            type="button"
+            className={`rounded-full border-0 bg-transparent px-2.5 py-[3px] text-[11px] font-semibold leading-none text-[#7c2d12] transition-[background-color,color,box-shadow,transform] duration-[180ms] ease-in-out hover:bg-[#ffedd5] active:scale-[0.96] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#431407] ${mode === "mock" ? "!bg-[#431407] !text-white shadow-[0_1px_3px_#43140755] hover:!bg-[#5b1d08]" : ""}`}
           >
             Mock
           </button>
@@ -37,7 +37,8 @@ export function TopBar({ debate, onExport }: { debate: DebateController; onExpor
             onClick={() => setMode("live")}
             disabled={!live.available}
             title={live.available ? `Live via ${live.provider}` : "Add OPENAI_API_KEY or ANTHROPIC_API_KEY to enable"}
-            className={`rounded-md px-2.5 py-1 font-medium transition disabled:cursor-not-allowed disabled:opacity-40 ${mode === "live" ? "bg-amber-400 text-slate-950" : "text-slate-400 hover:text-white"}`}
+            type="button"
+            className={`rounded-full border-0 bg-transparent px-2.5 py-[3px] text-[11px] font-semibold leading-none text-[#7c2d12] transition-[background-color,color,box-shadow,transform] duration-[180ms] ease-in-out hover:bg-[#ffedd5] active:scale-[0.96] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#431407] disabled:cursor-not-allowed disabled:opacity-40 ${mode === "live" ? "!bg-[#431407] !text-white shadow-[0_1px_3px_#43140755] hover:!bg-[#5b1d08]" : ""}`}
           >
             Live
           </button>
