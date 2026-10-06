@@ -4,6 +4,12 @@ import { useEffect, useState } from "react";
 import { Plus, Trash2 } from "lucide-react";
 import { addPersona, deletePersona, listPersonas, type NewPersona, type PersonaRow } from "@/app/personaActions";
 
+const EXTRA_PERSONAS: NewPersona[] = [
+  { name: "Orion", title: "The Strategist", emoji: "♟️", focus: "Long-term positioning", brief: "Thinks several moves ahead and weighs competitive positioning.", hex: "#818cf8" },
+  { name: "Luna", title: "The Empath", emoji: "💗", focus: "People & emotions", brief: "Considers how the decision affects everyone emotionally.", hex: "#fb7185" },
+  { name: "Quant", title: "The Data Analyst", emoji: "📊", focus: "Evidence & metrics", brief: "Demands data, benchmarks and measurable outcomes.", hex: "#38bdf8" },
+];
+
 const EMPTY: NewPersona = { name: "", title: "", emoji: "🤖", focus: "", brief: "", hex: "#a78bfa" };
 
 export function AgentManager() {
@@ -30,6 +36,12 @@ export function AgentManager() {
     }
   };
 
+  const handleAddThree = async () => {
+    const created = [];
+    for (const p of EXTRA_PERSONAS) created.push(await addPersona(p));
+    setPersonas((prev) => [...prev, ...created]);
+  };
+
   const handleDelete = async (id: number) => {
     await deletePersona(id);
     setPersonas(personas.filter((p) => p.id !== id));
@@ -40,6 +52,13 @@ export function AgentManager() {
   return (
     <section className="mx-auto w-full max-w-5xl px-4 pb-12 sm:px-6">
       <h2 className="mb-3 text-lg font-semibold text-white">Agents ({personas.length})</h2>
+
+      <button
+        onClick={handleAddThree}
+        className="mb-4 flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-fuchsia-500 py-6 text-2xl font-bold text-white shadow-lg hover:opacity-90"
+      >
+        <Plus size={28} /> Add 3 more agent personalities
+      </button>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {personas.map((p) => (
