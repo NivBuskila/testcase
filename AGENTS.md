@@ -1,10 +1,13 @@
 # AGENTS.md
 
-Minimal static "Hello World" site built with Vite (vanilla, no framework).
+**DecisionForge AI** — a multi-agent decision simulator built with Next.js 15 (App Router), TypeScript, Tailwind CSS, Framer Motion and Recharts.
 
-- Entry point: `index.html` (plain HTML/CSS, no JS framework).
-- Dev server: Vite, served on host port 3000 via `docker-compose.base44.yml`.
-- No backend, no database, no external services/secrets.
+- Dev server: `next dev`, served on host port 3000 via `docker-compose.base44.yml`.
+- Entry: `app/page.tsx` → `useDebate` hook (`hooks/useDebate.ts`) drives all state; `app/actions.ts` are the Next.js Server Actions the client calls.
+- Two run modes, toggled in the top bar:
+  - **Mock Mode** (default, no API key needed): deterministic simulated debate in `lib/mock/engine.ts`, with dilemma-aware "flavors" (`lib/mock/flavors.ts`: career / startup / tech / general) and constraint-reaction scripts (`lib/mock/constraints.ts`).
+  - **Live Mode**: calls OpenAI or Anthropic via `lib/llm/provider.ts`, using `AI_PROVIDER`/`OPENAI_API_KEY`/`ANTHROPIC_API_KEY` env vars. Prompts in `lib/llm/prompts.ts`, response validated/sanitized in `lib/llm/normalize.ts` (never trust raw LLM JSON). The Live toggle is disabled client-side until `getLiveStatus()` reports a key is present.
+- No database — everything is in-memory client state for the current session (nothing persisted across reloads by design).
+- `node_modules` and `.next` are NOT committed; they live in Docker named volumes, installed with `npm ci` on container start.
 - To run: `docker compose -f docker-compose.base44.yml up -d --build`.
-- Edits to `index.html` hot-reload automatically in the browser.
-- `node_modules` is NOT committed (see `.gitignore`); it lives in a Docker named volume and is installed with `npm ci` on container start. Never commit it — committed platform-specific binaries (rollup/esbuild) and a startup install mutating tracked files broke boot previously.
+- Export PDF uses the browser print dialog on a hidden print-only `components/PrintReport.tsx`, not a server-side PDF library.
