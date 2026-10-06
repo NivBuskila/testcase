@@ -8,20 +8,98 @@
       html, body {
         margin: 0;
         height: 100%;
+      }
+      body {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: #0f172a;
+        gap: 2vmin;
+        background: #FDFCF8;
+        color: #121212;
         font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       }
       h1 {
-        color: #f8fafc;
-        font-size: 3rem;
-        letter-spacing: 0.02em;
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9D7E4A;
+      }
+      .clock {
+        width: min(82vmin, 90vw);
+        height: auto;
+        filter: drop-shadow(0 2vmin 4vmin rgba(18, 18, 18, 0.12));
+      }
+      .digital {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: clamp(1rem, 3vmin, 1.75rem);
+        letter-spacing: 0.15em;
+        font-variant-numeric: tabular-nums;
       }
     </style>
   </head>
   <body>
     <h1>Hello, World!</h1>
+
+    <svg class="clock" viewBox="-100 -100 200 200" role="img" aria-label="Clock">
+      <circle r="98" fill="#FDFCF8" stroke="#121212" stroke-width="3" />
+      <circle r="91" fill="none" stroke="#E5E2D9" stroke-width="1" />
+      <g id="ticks"></g>
+      <g id="numbers" font-size="11" font-weight="800" text-anchor="middle"
+         dominant-baseline="central" fill="#121212"></g>
+      <line id="hour" y1="10" y2="-48" stroke="#121212" stroke-width="6" stroke-linecap="round" />
+      <line id="minute" y1="12" y2="-72" stroke="#121212" stroke-width="3.5" stroke-linecap="round" />
+      <line id="second" y1="18" y2="-82" stroke="#9D7E4A" stroke-width="1.2" stroke-linecap="round" />
+      <circle r="4" fill="#121212" />
+      <circle r="1.8" fill="#9D7E4A" />
+    </svg>
+
+    <div class="digital" id="digital" aria-live="off"></div>
+
+    <script type="module">
+      const NS = "http://www.w3.org/2000/svg";
+      const ticks = document.getElementById("ticks");
+      const numbers = document.getElementById("numbers");
+
+      for (let i = 0; i < 60; i++) {
+        const major = i % 5 === 0;
+        const line = document.createElementNS(NS, "line");
+        line.setAttribute("y1", -88);
+        line.setAttribute("y2", major ? -78 : -84);
+        line.setAttribute("stroke", major ? "#121212" : "#9D7E4A");
+        line.setAttribute("stroke-width", major ? 2.2 : 0.8);
+        line.setAttribute("transform", `rotate(${i * 6})`);
+        ticks.appendChild(line);
+      }
+
+      for (let n = 1; n <= 12; n++) {
+        const a = (n * 30 * Math.PI) / 180;
+        const text = document.createElementNS(NS, "text");
+        text.setAttribute("x", (Math.sin(a) * 66).toFixed(2));
+        text.setAttribute("y", (-Math.cos(a) * 66).toFixed(2));
+        text.textContent = n;
+        numbers.appendChild(text);
+      }
+
+      const hour = document.getElementById("hour");
+      const minute = document.getElementById("minute");
+      const second = document.getElementById("second");
+      const digital = document.getElementById("digital");
+
+      function tick() {
+        const now = new Date();
+        const s = now.getSeconds() + now.getMilliseconds() / 1000;
+        const m = now.getMinutes() + s / 60;
+        const h = (now.getHours() % 12) + m / 60;
+        second.setAttribute("transform", `rotate(${s * 6})`);
+        minute.setAttribute("transform", `rotate(${m * 6})`);
+        hour.setAttribute("transform", `rotate(${h * 30})`);
+        digital.textContent = now.toLocaleTimeString("he-IL", { hour12: false });
+        requestAnimationFrame(tick);
+      }
+      tick();
+    </script>
   </body>
 </html>
