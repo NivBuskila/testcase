@@ -52,7 +52,7 @@ export function ExecutiveSummaryModal({ open, onClose, onExport, dilemma, synthe
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-cyan-300">Executive summary</p>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-red-300">Executive summary</p>
                 <h2 id="exec-summary-title" dir="auto" className="mt-1 text-lg font-semibold text-white">
                   {dilemma}
                 </h2>
@@ -80,7 +80,7 @@ export function ExecutiveSummaryModal({ open, onClose, onExport, dilemma, synthe
               <div className="mt-5 grid grid-cols-3 gap-2 sm:grid-cols-6">
                 {RADAR_AXES.map(({ key, label }) => (
                   <div key={key} className="rounded-lg bg-slate-950/50 p-2 text-center">
-                    <p className="font-mono text-lg font-bold text-cyan-300">{scores[key]}</p>
+                    <p className="font-mono text-lg font-bold text-red-300">{scores[key]}</p>
                     <p className="text-[10px] text-slate-500">{label}</p>
                   </div>
                 ))}
@@ -91,10 +91,10 @@ export function ExecutiveSummaryModal({ open, onClose, onExport, dilemma, synthe
             <ol className="mt-2 space-y-2">
               {synthesis.steps.map((s, i) => (
                 <li key={`${s.title}-${i}`} className="flex gap-3 text-sm">
-                  <span className="font-mono text-cyan-300">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-mono text-red-300">{String(i + 1).padStart(2, "0")}</span>
                   <div>
                     <p dir="auto" className="font-medium text-slate-100">
-                      {s.title} <span className="font-mono text-xs text-amber-300/80">· {s.timeframe}</span>
+                      {s.title} <span className="font-mono text-xs text-red-300/80">· {s.timeframe}</span>
                     </p>
                     <p dir="auto" className="text-xs text-slate-400">
                       {s.detail}
@@ -110,7 +110,7 @@ export function ExecutiveSummaryModal({ open, onClose, onExport, dilemma, synthe
                 <ul className="mt-2 space-y-1.5">
                   {synthesis.keyRisks.map((r) => (
                     <li key={r} dir="auto" className="flex items-start gap-2 text-sm text-slate-300">
-                      <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-300" /> {r}
+                      <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-red-300" /> {r}
                     </li>
                   ))}
                 </ul>
@@ -120,7 +120,7 @@ export function ExecutiveSummaryModal({ open, onClose, onExport, dilemma, synthe
             {synthesis.constraintsApplied.length > 0 && (
               <div className="mt-5 flex flex-wrap gap-1.5">
                 {synthesis.constraintsApplied.map((c) => (
-                  <span key={c} dir="auto" className="inline-flex items-center gap-1 rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-1 text-[11px] text-amber-200">
+                  <span key={c} dir="auto" className="inline-flex items-center gap-1 rounded-full border border-red-400/30 bg-red-400/10 px-2.5 py-1 text-[11px] text-red-200">
                     <Zap className="h-3 w-3" /> {c}
                   </span>
                 ))}

@@ -19,7 +19,7 @@ export function SynthesisPanel({ synthesis, ready, onOpenReport }: SynthesisPane
   return (
     <GlassCard
       title="Final Synthesis"
-      icon={<Scale className="h-4 w-4 text-amber-300" />}
+      icon={<Scale className="h-4 w-4 text-red-300" />}
       action={
         ready && synthesis ? (
           <Button size="sm" variant="outline" onClick={onOpenReport}>
@@ -65,12 +65,12 @@ export function SynthesisPanel({ synthesis, ready, onOpenReport }: SynthesisPane
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="flex items-center gap-2 text-xs font-semibold text-slate-100">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-cyan-400/15 font-mono text-[10px] text-cyan-300">
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-400/15 font-mono text-[10px] text-red-300">
                       {i + 1}
                     </span>
                     <span dir="auto">{step.title}</span>
                   </span>
-                  <span className="shrink-0 font-mono text-[10px] text-amber-300/80">{step.timeframe}</span>
+                  <span className="shrink-0 font-mono text-[10px] text-red-300/80">{step.timeframe}</span>
                 </div>
                 <p dir="auto" className="mt-1.5 text-xs leading-relaxed text-slate-400">
                   {step.detail}

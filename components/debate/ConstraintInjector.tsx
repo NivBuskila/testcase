@@ -41,7 +41,7 @@ export function ConstraintInjector({ disabled, used, onInject }: ConstraintInjec
           maxLength={400}
           onChange={(e) => setValue(e.target.value)}
           placeholder="Inject a constraint… e.g. “What if the budget is halved?”"
-          className="h-10 min-w-0 flex-1 rounded-lg border border-white/10 bg-slate-950/60 px-3 text-sm text-slate-100 placeholder:text-slate-500 focus:border-amber-400/60 focus:outline-none focus:ring-2 focus:ring-amber-400/20"
+          className="h-10 min-w-0 flex-1 rounded-lg border border-white/10 bg-slate-950/60 px-3 text-sm text-slate-100 placeholder:text-slate-500 focus:border-red-400/60 focus:outline-none focus:ring-2 focus:ring-red-400/20"
         />
         <Button type="submit" variant="amber" disabled={disabled || !value.trim()}>
           <Zap className="h-4 w-4" />
@@ -55,7 +55,7 @@ export function ConstraintInjector({ disabled, used, onInject }: ConstraintInjec
             type="button"
             disabled={disabled}
             onClick={() => onInject(p)}
-            className="rounded-full border border-amber-400/20 bg-amber-400/5 px-2.5 py-1 text-[11px] text-amber-200/90 transition hover:border-amber-400/50 hover:bg-amber-400/10 disabled:cursor-not-allowed disabled:opacity-40"
+            className="rounded-full border border-red-400/20 bg-red-400/5 px-2.5 py-1 text-[11px] text-red-200/90 transition hover:border-red-400/50 hover:bg-red-400/10 disabled:cursor-not-allowed disabled:opacity-40"
           >
             {p}
           </button>

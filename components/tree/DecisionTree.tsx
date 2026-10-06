@@ -118,7 +118,7 @@ export function DecisionTree({ tree }: { tree: TreeNode | null }) {
   return (
     <GlassCard
       title="Interactive Decision Tree"
-      icon={<Network className="h-4 w-4 text-cyan-300" />}
+      icon={<Network className="h-4 w-4 text-red-300" />}
       action={<span className="text-[11px] text-slate-500">Click any node to explore</span>}
     >
       {!tree ? (
@@ -140,7 +140,7 @@ export function DecisionTree({ tree }: { tree: TreeNode | null }) {
                     key={e.id}
                     d={e.d}
                     fill="none"
-                    stroke={e.highlighted ? "#22d3ee" : "rgba(148,163,184,0.3)"}
+                    stroke={e.highlighted ? "#f87171" : "rgba(148,163,184,0.3)"}
                     strokeWidth={e.highlighted ? 2 : 1.25}
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}

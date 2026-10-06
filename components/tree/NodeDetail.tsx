@@ -45,7 +45,7 @@ export function NodeDetail({ node }: { node: TreeNode }) {
       className="mt-4"
     >
       <div className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <span className="text-[10px] uppercase tracking-[0.18em] text-cyan-300">{KIND_LABEL[node.kind]}</span>
+        <span className="text-[10px] uppercase tracking-[0.18em] text-red-300">{KIND_LABEL[node.kind]}</span>
         <h3 dir="auto" className="text-sm font-semibold text-white">
           {node.label}
         </h3>
@@ -56,9 +56,9 @@ export function NodeDetail({ node }: { node: TreeNode }) {
         )}
       </div>
       <div className="grid gap-3 sm:grid-cols-3">
-        <Column title="Pros" items={node.pros} tone="text-emerald-300" icon={<ThumbsUp className="h-3.5 w-3.5" />} />
+        <Column title="Pros" items={node.pros} tone="text-red-300" icon={<ThumbsUp className="h-3.5 w-3.5" />} />
         <Column title="Cons" items={node.cons} tone="text-rose-300" icon={<ThumbsDown className="h-3.5 w-3.5" />} />
-        <Column title="Mitigation" items={node.mitigations} tone="text-amber-300" icon={<ShieldCheck className="h-3.5 w-3.5" />} />
+        <Column title="Mitigation" items={node.mitigations} tone="text-red-300" icon={<ShieldCheck className="h-3.5 w-3.5" />} />
       </div>
     </motion.div>
   );

@@ -12,7 +12,7 @@ export function TopBar({ debate, onExport }: { debate: DebateController; onExpor
   return (
     <header className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-4 py-3 sm:px-6">
       <div className="flex min-w-0 items-center gap-3">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-amber-400 shadow-glow">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-red-400 to-red-400 shadow-glow">
           <Sparkles className="h-5 w-5 text-slate-950" />
         </div>
         <div className="min-w-0">
@@ -29,15 +29,16 @@ export function TopBar({ debate, onExport }: { debate: DebateController; onExpor
         <div className="flex items-center rounded-lg border border-white/10 bg-white/5 p-0.5 text-xs">
           <button
             onClick={() => setMode("mock")}
-            className={`rounded-md px-2.5 py-1 font-medium transition ${mode === "mock" ? "bg-cyan-400 text-slate-950" : "text-slate-400 hover:text-white"}`}
+            title="Demo mode: a simulated debate, no API key needed"
+            className={`rounded-md px-2.5 py-1 font-medium transition ${mode === "mock" ? "bg-red-400 text-slate-950" : "text-slate-400 hover:text-white"}`}
           >
-            Mock
+            Mock (demo)
           </button>
           <button
             onClick={() => setMode("live")}
             disabled={!live.available}
-            title={live.available ? `Live via ${live.provider}` : "Add OPENAI_API_KEY or ANTHROPIC_API_KEY to enable"}
-            className={`rounded-md px-2.5 py-1 font-medium transition disabled:cursor-not-allowed disabled:opacity-40 ${mode === "live" ? "bg-amber-400 text-slate-950" : "text-slate-400 hover:text-white"}`}
+            title={live.available ? `Live: real AI debate via ${live.provider}` : "Live: real AI debate. Add OPENAI_API_KEY or ANTHROPIC_API_KEY to enable"}
+            className={`rounded-md px-2.5 py-1 font-medium transition disabled:cursor-not-allowed disabled:opacity-40 ${mode === "live" ? "bg-red-400 text-slate-950" : "text-slate-400 hover:text-white"}`}
           >
             Live
           </button>

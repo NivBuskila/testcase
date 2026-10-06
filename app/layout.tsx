@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark">
       <body className="min-h-screen bg-forge-bg font-sans text-slate-100 antialiased">
-        <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_0%,rgba(34,211,238,0.12),transparent_55%),radial-gradient(circle_at_85%_100%,rgba(251,191,36,0.1),transparent_55%)]" />
+        <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_15%_0%,rgba(248,113,113,0.12),transparent_55%),radial-gradient(circle_at_85%_100%,rgba(248,113,113,0.1),transparent_55%)]" />
         {children}
       </body>
     </html>

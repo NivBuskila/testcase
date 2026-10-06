@@ -2,9 +2,9 @@ import type { Verdict } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 const STYLES: Record<Verdict, string> = {
-  GO: "border-emerald-400/50 bg-emerald-400/15 text-emerald-200",
-  "GO WITH CONDITIONS": "border-cyan-400/50 bg-cyan-400/15 text-cyan-200",
-  WAIT: "border-amber-400/50 bg-amber-400/15 text-amber-200",
+  GO: "border-red-400/50 bg-red-400/15 text-red-200",
+  "GO WITH CONDITIONS": "border-red-400/50 bg-red-400/15 text-red-200",
+  WAIT: "border-red-400/50 bg-red-400/15 text-red-200",
   "NO-GO": "border-rose-400/50 bg-rose-400/15 text-rose-200",
 };
 
