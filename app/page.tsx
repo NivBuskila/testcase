@@ -10,6 +10,7 @@ import { ExecutiveSummaryModal } from "@/components/synthesis/ExecutiveSummaryMo
 import { PrintReport } from "@/components/PrintReport";
 import { DilemmaForm } from "@/components/DilemmaForm";
 import { TopBar } from "@/components/layout/TopBar";
+import { AgentManager } from "@/components/agents/AgentManager";
 import { useDebate } from "@/hooks/useDebate";
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
       <div className="flex min-h-screen flex-col print:hidden">
         <TopBar debate={debate} onExport={handleExport} />
         <DilemmaForm loading={false} error={error} onSubmit={start} />
+        <AgentManager />
       </div>
     );
   }
