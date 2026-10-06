@@ -11,6 +11,7 @@ import { PrintReport } from "@/components/PrintReport";
 import { DilemmaForm } from "@/components/DilemmaForm";
 import { TopBar } from "@/components/layout/TopBar";
 import { AgentManager } from "@/components/agents/AgentManager";
+import { DbPanel } from "@/components/DbPanel";
 import { useDebate } from "@/hooks/useDebate";
 
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
         <TopBar debate={debate} onExport={handleExport} />
         <DilemmaForm loading={false} error={error} onSubmit={start} />
         <AgentManager />
+        <DbPanel />
       </div>
     );
   }
