@@ -1,6 +1,17 @@
 {
   "previewPort": 3000,
   "healthPath": "/",
-  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
-  "secrets": []
+  "startCommand": "docker compose -f docker-compose.base44.yml up -d --build",
+  "secrets": [
+    {
+      "name": "OPENAI_API_KEY",
+      "description": "OpenAI API key for Live Mode debates (platform.openai.com/api-keys). Optional — app runs in Mock Mode without it.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "ANTHROPIC_API_KEY",
+      "description": "Anthropic API key for Live Mode debates (console.anthropic.com). Optional — app runs in Mock Mode without it.",
+      "requiredAtBoot": false
+    }
+  ]
 }
