@@ -38,6 +38,21 @@
         letter-spacing: 0.15em;
         font-variant-numeric: tabular-nums;
       }
+      .confetti-piece {
+        position: fixed;
+        top: -10px;
+        width: 8px;
+        height: 14px;
+        pointer-events: none;
+        z-index: 999;
+        animation: confetti-fall linear forwards;
+      }
+      @keyframes confetti-fall {
+        to {
+          transform: translateY(110vh) rotate(540deg);
+          opacity: 0.9;
+        }
+      }
     </style>
   </head>
   <body>
@@ -88,6 +103,34 @@
       const second = document.getElementById("second");
       const digital = document.getElementById("digital");
 
+      const confettiColors = ["#9D7E4A", "#121212", "#E5E2D9", "#C7A869", "#5B4A2E"];
+
+      function launchConfetti() {
+        const count = 120;
+        for (let i = 0; i < count; i++) {
+          const piece = document.createElement("div");
+          piece.className = "confetti-piece";
+          piece.style.left = Math.random() * 100 + "vw";
+          piece.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+          piece.style.animationDuration = 2.5 + Math.random() * 1.5 + "s";
+          piece.style.animationDelay = Math.random() * 0.5 + "s";
+          document.body.appendChild(piece);
+          piece.addEventListener("animationend", () => piece.remove());
+        }
+      }
+
+      let lastNineTrigger = null;
+
+      function checkNineOClock(now) {
+        const hours24 = now.getHours();
+        const isNine = (hours24 === 9 || hours24 === 21) && now.getMinutes() === 0 && now.getSeconds() === 0;
+        const key = now.toDateString() + "-" + hours24;
+        if (isNine && lastNineTrigger !== key) {
+          lastNineTrigger = key;
+          launchConfetti();
+        }
+      }
+
       function tick() {
         const now = new Date();
         const s = now.getSeconds() + now.getMilliseconds() / 1000;
@@ -97,6 +140,7 @@
         minute.setAttribute("transform", `rotate(${m * 6})`);
         hour.setAttribute("transform", `rotate(${h * 30})`);
         digital.textContent = now.toLocaleTimeString("he-IL", { hour12: false });
+        checkNineOClock(now);
         requestAnimationFrame(tick);
       }
       tick();
