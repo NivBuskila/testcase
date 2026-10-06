@@ -9,8 +9,8 @@ const config: Config = {
         forge: {
           bg: "#0f172a",
           panel: "rgba(15, 23, 42, 0.6)",
-          cyan: "#22d3ee",
-          amber: "#fbbf24",
+          cyan: "#f87171",
+          amber: "#f87171",
         },
       },
       fontFamily: {
@@ -18,8 +18,8 @@ const config: Config = {
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
       boxShadow: {
-        glow: "0 0 24px -4px rgba(34, 211, 238, 0.45)",
-        "glow-amber": "0 0 24px -4px rgba(251, 191, 36, 0.45)",
+        glow: "0 0 24px -4px rgba(248,113,113, 0.45)",
+        "glow-amber": "0 0 24px -4px rgba(248,113,113, 0.45)",
       },
       keyframes: {
         shimmer: { "100%": { transform: "translateX(100%)" } },

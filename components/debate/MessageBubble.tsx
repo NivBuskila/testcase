@@ -10,7 +10,7 @@ import { AgentAvatar } from "../agents/AgentAvatar";
 function SentimentChip({ sentiment }: { sentiment: number }) {
   if (sentiment > 0.15)
     return (
-      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/10 px-2 py-0.5 text-[10px] font-medium text-emerald-300">
+      <span className="inline-flex items-center gap-1 rounded-full bg-red-400/10 px-2 py-0.5 text-[10px] font-medium text-red-300">
         <TrendingUp className="h-3 w-3" /> For
       </span>
     );
@@ -64,7 +64,7 @@ export function MessageBubble({ message }: { message: DebateMessage }) {
                 key={i.label}
                 className={cn(
                   "rounded-md px-1.5 py-0.5 font-mono text-[10px]",
-                  i.value > 0 ? "bg-emerald-400/10 text-emerald-300" : "bg-rose-400/10 text-rose-300",
+                  i.value > 0 ? "bg-red-400/10 text-red-300" : "bg-rose-400/10 text-rose-300",
                 )}
               >
                 {i.label} {i.value > 0 ? "+" : ""}

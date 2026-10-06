@@ -15,7 +15,7 @@ export function ConfidenceRing({ value }: { value: number }) {
           cy="32"
           r={R}
           fill="none"
-          stroke="#fbbf24"
+          stroke="#f87171"
           strokeWidth="6"
           strokeLinecap="round"
           strokeDasharray={CIRC}

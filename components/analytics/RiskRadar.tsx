@@ -17,7 +17,7 @@ export function RiskRadar({ base, current }: RiskRadarProps) {
     base && current ? RADAR_AXES.map(({ key, label }) => ({ axis: label, initial: base[key], current: current[key] })) : [];
 
   return (
-    <GlassCard title="Risk vs. Reward Radar" icon={<RadarIcon className="h-4 w-4 text-cyan-300" />}>
+    <GlassCard title="Risk vs. Reward Radar" icon={<RadarIcon className="h-4 w-4 text-red-300" />}>
       {data.length === 0 ? (
         <Skeleton className="mx-auto h-64 w-64 rounded-full" />
       ) : (
@@ -39,9 +39,9 @@ export function RiskRadar({ base, current }: RiskRadarProps) {
               <Radar
                 name="After debate"
                 dataKey="current"
-                stroke="#22d3ee"
+                stroke="#f87171"
                 strokeWidth={2}
-                fill="#22d3ee"
+                fill="#f87171"
                 fillOpacity={0.25}
                 animationDuration={700}
               />

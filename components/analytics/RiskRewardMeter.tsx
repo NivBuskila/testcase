@@ -47,7 +47,7 @@ const ARC_LENGTH = Math.PI * 80;
 export function RiskRewardMeter({ scores }: { scores: RadarScores | null }) {
   if (!scores) {
     return (
-      <GlassCard title="Decision Index" icon={<Gauge className="h-4 w-4 text-amber-300" />}>
+      <GlassCard title="Decision Index" icon={<Gauge className="h-4 w-4 text-red-300" />}>
         <Skeleton className="mx-auto h-28 w-48" />
         <Skeleton className="mt-6 h-3 w-full" />
         <Skeleton className="mt-4 h-3 w-full" />
@@ -56,10 +56,10 @@ export function RiskRewardMeter({ scores }: { scores: RadarScores | null }) {
   }
 
   const { risk, reward, index } = riskReward(scores);
-  const color = index >= 60 ? "#34d399" : index >= 45 ? "#fbbf24" : "#fb7185";
+  const color = index >= 60 ? "#f87171" : index >= 45 ? "#f87171" : "#f87171";
 
   return (
-    <GlassCard title="Decision Index" icon={<Gauge className="h-4 w-4 text-amber-300" />}>
+    <GlassCard title="Decision Index" icon={<Gauge className="h-4 w-4 text-red-300" />}>
       <div className="relative mx-auto w-52">
         <svg viewBox="0 0 200 110" className="w-full">
           <path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="14" strokeLinecap="round" />
@@ -83,8 +83,8 @@ export function RiskRewardMeter({ scores }: { scores: RadarScores | null }) {
         </div>
       </div>
       <div className="mt-5 space-y-3">
-        <Bar label="Reward potential" value={reward} color="#22d3ee" icon={<Sparkles className="h-3.5 w-3.5 text-cyan-300" />} />
-        <Bar label="Risk exposure" value={risk} color="#fbbf24" icon={<ShieldAlert className="h-3.5 w-3.5 text-amber-300" />} />
+        <Bar label="Reward potential" value={reward} color="#f87171" icon={<Sparkles className="h-3.5 w-3.5 text-red-300" />} />
+        <Bar label="Risk exposure" value={risk} color="#f87171" icon={<ShieldAlert className="h-3.5 w-3.5 text-red-300" />} />
       </div>
     </GlassCard>
   );

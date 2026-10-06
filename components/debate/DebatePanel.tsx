@@ -18,7 +18,7 @@ export function DebatePanel({ debate }: { debate: DebateController }) {
   return (
     <GlassCard
       title="Live Debate"
-      icon={<MessagesSquare className="h-4 w-4 text-cyan-300" />}
+      icon={<MessagesSquare className="h-4 w-4 text-red-300" />}
       className="flex h-full flex-col"
       action={
         <div className="flex items-center gap-2">

@@ -18,12 +18,12 @@ interface DebateStreamProps {
 function ConstraintDivider({ text }: { text: string }) {
   return (
     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-3 py-1">
-      <span className="h-px flex-1 bg-gradient-to-r from-transparent to-amber-400/50" />
-      <span dir="auto" className="flex max-w-[80%] items-center gap-1.5 rounded-full border border-amber-400/40 bg-amber-400/10 px-3 py-1 text-[11px] font-medium text-amber-200">
+      <span className="h-px flex-1 bg-gradient-to-r from-transparent to-red-400/50" />
+      <span dir="auto" className="flex max-w-[80%] items-center gap-1.5 rounded-full border border-red-400/40 bg-red-400/10 px-3 py-1 text-[11px] font-medium text-red-200">
         <Zap className="h-3 w-3 shrink-0" />
         <span className="truncate">Constraint injected: {text}</span>
       </span>
-      <span className="h-px flex-1 bg-gradient-to-l from-transparent to-amber-400/50" />
+      <span className="h-px flex-1 bg-gradient-to-l from-transparent to-red-400/50" />
     </motion.div>
   );
 }
@@ -65,7 +65,7 @@ export function DebateStream({ messages, typingAgent, assembling, reevaluating }
         {typingAgent && <TypingIndicator key={`typing-${messages.length}`} agentId={typingAgent} />}
       </AnimatePresence>
       {reevaluating && (
-        <div className="flex items-center justify-center gap-2 py-3 text-xs text-amber-200">
+        <div className="flex items-center justify-center gap-2 py-3 text-xs text-red-200">
           <Loader2 className="h-4 w-4 animate-spin" /> Agents are re-evaluating under the new constraint…
         </div>
       )}

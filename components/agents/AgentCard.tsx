@@ -41,7 +41,7 @@ export function AgentCard({ agentId, stance, active, index }: AgentCardProps) {
         </div>
       </div>
       <div className="mt-3">
-        <div className="relative h-1.5 rounded-full bg-gradient-to-r from-rose-500/40 via-slate-600/40 to-emerald-500/40">
+        <div className="relative h-1.5 rounded-full bg-gradient-to-r from-rose-500/40 via-slate-600/40 to-red-500/40">
           <motion.span
             className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-slate-950"
             style={{ backgroundColor: agent.hex }}

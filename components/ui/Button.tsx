@@ -6,8 +6,8 @@ type Size = "sm" | "md" | "lg";
 
 const VARIANTS: Record<Variant, string> = {
   primary:
-    "bg-cyan-400 text-slate-950 hover:bg-cyan-300 shadow-glow disabled:bg-cyan-400/40 disabled:shadow-none",
-  amber: "bg-amber-400 text-slate-950 hover:bg-amber-300 shadow-glow-amber disabled:bg-amber-400/40 disabled:shadow-none",
+    "bg-red-400 text-slate-950 hover:bg-red-300 shadow-glow disabled:bg-red-400/40 disabled:shadow-none",
+  amber: "bg-red-400 text-slate-950 hover:bg-red-300 shadow-glow-amber disabled:bg-red-400/40 disabled:shadow-none",
   outline: "border border-white/15 bg-white/5 text-slate-100 hover:bg-white/10 hover:border-white/25",
   ghost: "text-slate-300 hover:bg-white/10 hover:text-white",
 };
@@ -33,7 +33,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       type={type}
       className={cn(
         "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950",
         "disabled:cursor-not-allowed disabled:opacity-60 active:scale-[0.98]",
         VARIANTS[variant],
         SIZES[size],
