@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { AGENTS } from "@/lib/agents";
 import type { AgentId } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { AgentIcon } from "./AgentIcon";
 
 interface AgentAvatarProps {
   agentId: AgentId;
@@ -36,7 +37,7 @@ export function AgentAvatar({ agentId, active = false, size = "md" }: AgentAvata
         )}
         aria-hidden
       >
-        <span className="drop-shadow">{agent.emoji}</span>
+        <AgentIcon agentId={agentId} className={cn("text-white drop-shadow", size === "sm" ? "h-4 w-4" : "h-5 w-5")} />
       </motion.div>
     </div>
   );

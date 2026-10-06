@@ -5,6 +5,7 @@ import { AlertCircle, ArrowRight, Loader2 } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { AGENTS, AGENT_ORDER } from "@/lib/agents";
 import { Button } from "./ui/Button";
+import { AgentIcon } from "./agents/AgentIcon";
 
 const EXAMPLES = [
   "Should I quit my job to launch a SaaS?",
@@ -91,7 +92,7 @@ export function DilemmaForm({ loading, error, onSubmit }: DilemmaFormProps) {
             const agent = AGENTS[id];
             return (
               <div key={id} className={`rounded-xl border ${agent.border} ${agent.bg} p-3 text-center`}>
-                <p className="text-2xl">{agent.emoji}</p>
+                <AgentIcon agentId={id} className={`mx-auto h-6 w-6 ${agent.text}`} />
                 <p className="mt-1 text-xs font-semibold text-white">{agent.title}</p>
                 <p className="mt-0.5 text-[10px] text-slate-400">{agent.focus}</p>
               </div>

@@ -101,7 +101,7 @@ export function PrintReport({ dilemma, messages, scores, synthesis, tree }: Prin
           {messages.map((m) => (
             <p key={m.id} dir="auto" className="break-inside-avoid">
               <strong>
-                {AGENTS[m.agentId].emoji} {AGENTS[m.agentId].name} ({AGENTS[m.agentId].title})
+                {AGENTS[m.agentId].name} ({AGENTS[m.agentId].title})
                 {m.constraint ? ` · re: "${m.constraint}"` : ""}:
               </strong>{" "}
               {m.content}
